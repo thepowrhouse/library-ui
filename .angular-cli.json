@@ -9,7 +9,8 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        { "glob": "**/*", "input": "./app/shared-components/assets", "output": "./assets/" }
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -21,7 +22,10 @@
       "styles": [
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "./app/shared-components/vendors/libs/bcryptjs/dist/bcrypt.min.js",
+        "./app/shared-components/vendors/fsd-authentication-library/authentication.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

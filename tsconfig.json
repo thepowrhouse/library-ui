@@ -9,11 +9,21 @@
     "experimentalDecorators": true,
     "target": "es5",
     "typeRoots": [
-      "node_modules/@types"
+      "node_modules/@types",
+      "src/app/shared-components/vendors/fsd-authentication-library"
     ],
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "baseUrl": "src",
+    "paths": {
+      "@fsd-shared/*": [
+        "app/shared-components/*"
+      ],
+      "@app/*": [
+        "app/*"
+      ]
+    }
   }
 }

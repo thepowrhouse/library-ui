@@ -1,16 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { FormsModule } from "@angular/forms";
+import { HttpModule } from "@angular/http";
+import { FSDSharedModule } from "@fsd-shared/fsd-shared.module";
+import { GlobalErrorHandler } from "@fsd-shared/error-handler";
+import {ConfigService} from "@app/services/config.service";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    FSDSharedModule
   ],
-  providers: [],
+  providers: [
+    { provide: ErrorHandler, useClass: GlobalErrorHandler },
+    ConfigService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
