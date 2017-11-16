@@ -1,7 +1,7 @@
-import {Component, NgZone, OnInit} from '@angular/core';
-import { Subject } from "rxjs/Subject";
-import { AuthService } from "@fsd-shared/services/auth.service";
-import { NetworkService } from "@fsd-shared/services/network.service";
+import {Component, NgZone, OnInit} from "@angular/core";
+import {Subject} from "rxjs/Subject";
+import {AuthService} from "@fsd-shared/services/auth.service";
+import {NetworkService} from "@fsd-shared/services/network.service";
 import {environment} from "../environments/environment";
 import {ConfigService} from "@app/services/config.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
@@ -19,16 +19,15 @@ export class AppComponent implements OnInit {
   private _tokenStream = new Subject();
   private _tokenSource$ = this._tokenStream.asObservable();
 
-  constructor(
-    private _auth: AuthService,
-    private _config: ConfigService,
-    private _network: NetworkService,
-    private _zone: NgZone,
-    private modalService:NgbModal
-  ){}
+  constructor(private _auth:AuthService,
+              private _config:ConfigService,
+              private _network:NetworkService,
+              private _zone:NgZone,
+              private modalService:NgbModal) {
+  }
 
   ngOnInit() {
-    console.log('current token '+ this._auth.currentToken);
+    console.log('current token ' + this._auth.currentToken);
     this.initializeAuth();
   }
 
@@ -38,13 +37,12 @@ export class AppComponent implements OnInit {
       clientId: this._config.authenticationClientId,
       clientSecret: this._config.authenticationClientSecret
     });
+    
 
-    this._auth.authenticate(environment.userName, environment.password, function (err) {
-      if (err) {
-        console.log(err);
-        return;
-      }
-    });
+    if(!this._auth.currentToken || this._auth.expired){
+      this.login();
+    }
+
   }
 
   public closeApp() {
@@ -91,8 +89,23 @@ export class AppComponent implements OnInit {
   ];
 
 
-
   login() {
-    const modalRef = this.modalService.open(LoginComponent);
+    let self = this;
+    const modalRef = this.modalService.open(LoginComponent).result
+      .then((result) => {
+          if (result && result.action == 'Login') {
+            this._auth.authenticate(result.userName, result.password, function (err) {
+              if (err) {
+                console.log(err);
+                self.login();
+              }
+              self.items[0].title = self._auth.currentUser.userName;
+            });
+          }
+        },
+        (reason) => {
+
+        });
+
   }
 }
