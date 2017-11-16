@@ -7,6 +7,8 @@ import { HttpModule } from "@angular/http";
 import { FSDSharedModule } from "@fsd-shared/fsd-shared.module";
 import { GlobalErrorHandler } from "@fsd-shared/error-handler";
 import {ConfigService} from "@app/services/config.service";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import {ConfigService} from "@app/services/config.service";
     BrowserModule,
     FormsModule,
     HttpModule,
-    FSDSharedModule
+    FSDSharedModule,
+    NgbModule.forRoot()
   ],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },

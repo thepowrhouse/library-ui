@@ -4,6 +4,9 @@ import { AuthService } from "@fsd-shared/services/auth.service";
 import { NetworkService } from "@fsd-shared/services/network.service";
 import {environment} from "../environments/environment";
 import {ConfigService} from "@app/services/config.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {LoginComponent} from "./shared-components/login/login.component";
+import {IHeaderItem} from "./shared-components/header/header-item";
 
 @Component({
   selector: 'app-root',
@@ -20,7 +23,8 @@ export class AppComponent implements OnInit {
     private _auth: AuthService,
     private _config: ConfigService,
     private _network: NetworkService,
-    private _zone: NgZone
+    private _zone: NgZone,
+    private modalService:NgbModal
   ){}
 
   ngOnInit() {
@@ -55,5 +59,40 @@ export class AppComponent implements OnInit {
 
   public handleContext() {
     return !environment.production;
+  }
+
+  items:Array<IHeaderItem> = [
+    {
+      title: 'Home',
+      link: '/',
+      type: 'Link',
+      action: undefined
+    },
+    {
+      title: 'Books',
+      link: '/books',
+      type: 'Link',
+      action: undefined
+    },
+    {
+      title: 'Search',
+      link: undefined,
+      type: 'Search',
+      action: function (form) {
+        console.log('Search...', form.value);
+      }
+    },
+    {
+      title: 'Login',
+      link: undefined,
+      type: 'Button',
+      action: this.login.bind(this)
+    }
+  ];
+
+
+
+  login() {
+    const modalRef = this.modalService.open(LoginComponent);
   }
 }
