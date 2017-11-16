@@ -1,0 +1,11 @@
+---
+buildName: "library-service"
+links:
+  Git: "https://github.com/thepowrhouse/library-ui.git"
+  Job: "http://192.168.64.2:32452/job/library-service"
+  Production: "http://10.0.0.228:80/kubernetes/pods?namespace=default-production"
+  Staging: "http://10.0.0.228:80/kubernetes/pods?namespace=default-staging"
+environments:
+  Staging: "default-staging"
+  Production: "default-production"
+useLocalFlow: true
