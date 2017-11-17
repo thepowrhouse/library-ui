@@ -37,10 +37,11 @@ export class AppComponent implements OnInit {
       clientId: this._config.authenticationClientId,
       clientSecret: this._config.authenticationClientSecret
     });
-    
 
-    if(!this._auth.currentToken || this._auth.expired){
-      this.login();
+
+    if (!this._auth.currentToken || this._auth.expired) {
+      this.items.filter(i=>i.title == 'Logout')[0].display = false;
+      this.login('');
     }
 
   }
@@ -64,13 +65,15 @@ export class AppComponent implements OnInit {
       title: 'Home',
       link: '/',
       type: 'Link',
-      action: undefined
+      action: undefined,
+      display: true
     },
     {
       title: 'Books',
       link: '/books',
       type: 'Link',
-      action: undefined
+      action: undefined,
+      display: true
     },
     {
       title: 'Search',
@@ -78,34 +81,60 @@ export class AppComponent implements OnInit {
       type: 'Search',
       action: function (form) {
         console.log('Search...', form.value);
-      }
+      },
+      display: true
     },
     {
       title: 'Login',
       link: undefined,
       type: 'Button',
-      action: this.login.bind(this)
+      action: this.login.bind(this),
+      display: true
+    },
+
+    {
+      title: 'Logout',
+      link: undefined,
+      type: 'Button',
+      action: this.login.bind(this),
+      display: true
+    },
+
+    {
+      title: undefined,
+      link: undefined,
+      type: 'UserName',
+      action: undefined,
+      display: true
     }
   ];
 
 
-  login() {
+  login(err:string) {
     let self = this;
-    const modalRef = this.modalService.open(LoginComponent).result
+    const modalRef = this.modalService.open(LoginComponent);
+    modalRef.componentInstance.errorMessage=err;
+    modalRef.result
       .then((result) => {
           if (result && result.action == 'Login') {
             this._auth.authenticate(result.userName, result.password, function (err) {
-              if (err) {
+              if (err || !self._auth.userName) {
                 console.log(err);
-                self.login();
+                self.login("Login failed");
               }
-              self.items[0].title = self._auth.currentUser.userName;
+              self.items.filter(i=>i.title == 'Logout')[0].display = true;
+              self.items.filter(i=>i.title == 'Login')[0].display = false;
+              self.items.filter(i=>i.type == 'UserName')[0].title = self._auth.userName;
             });
           }
         },
         (reason) => {
 
         });
+  }
 
+  logout() {
+    this._auth.invalidateToken();
+    this.login('');
   }
 }
