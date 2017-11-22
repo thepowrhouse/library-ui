@@ -1,0 +1,23 @@
+<h1  style = "text-align: center;"  class="card-header">Book Approval</h1>
+
+    <table class="d-table">
+        <tr>
+            <td>Book ID : </td>
+            <td>{{ book.id }}</td>
+        </tr>
+        <tr>
+                <td>Book Name : </td>
+                <td>{{ book.name }}</td>
+        </tr>
+        <tr>
+                <td>Book ID : </td>
+                <td>{{ book.description }}</td>
+        </tr>   
+        <tr>
+                <td>Notes : </td>
+                <td><input type="text-area" class="textarea"/></td>    
+        </tr> 
+    </table>
+
+    <input type="submit" class="btn-submit" value="Approved"/>
+    <input type ="submit" class="btn-submit" value="Rejected"/>
