@@ -21,15 +21,20 @@
 
                 </tr>
                                 <tr *ngFor = "let book of books">
-                                        <a (click) = "getBookDetails()">
-                                          <td> {{ book.id }} </td>
+                                        <a>
+                                          <td> {{ book.bookId }} </td>
                                         </a>
                                                 
                                                 <td> {{ book.name }} </td>
                                                 <td> {{ book.description }} </td>
+                                                <a><td> Request Books </td></a>
                                             </tr>
 
             </table>
+            
+            <bookview-root *ngIf="actionSelected === 'viewBooks'"></bookview-root>
+            
+            <bookrequest-root *ngIf="actionSelected === 'requestBooks'"></bookrequest-root>
 
             
   

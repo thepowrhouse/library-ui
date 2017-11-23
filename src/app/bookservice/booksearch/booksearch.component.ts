@@ -1,29 +1,34 @@
-import { Component } from "@angular/core";
+import { Component, Injectable, Output, EventEmitter } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Book } from "../bookservice.model";
+import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
+import { HttpHeaders } from "@angular/common/http/src/headers";
+import { BookService } from "../bookservice";
 
 @Component({
     selector: 'booksearch-root',
     templateUrl: './booksearch.component.html'
 }
 )
-export class BookSearchComponent{
-    books: Book[] = [
-        new Book('1','Pirates of caribean','The great book on pirates of caribean','1234','Jack','Newyork','Long live Pirates','2010','US','3','Available')
-    ];
+export class BookSearchComponent implements OnInit{
+    
+    books: Book[];
+    actionSelected: String;
 
-    constructor(private http: HttpClient){
+    constructor(private http: HttpClient, private bookService:BookService){
         
-          }
+    }
 
-    searchBooks(){
-        this.books.push(new Book('1','Pirates of caribean','The great book on pirates of caribean','1234','Jack','Newyork','Long live Pirates','2010','US','3','Available'));
-        this.http.get('https://api.github.com/users/seeschweiler').subscribe(res => {
-            console.log(res);
-          },
-          err => {
-            console.log("Error occured");
-          });
+    ngOnInit(){
+        this.bookService.getBooks().then(books => this.books = books);
+    }
+
+      viewBooks(){
+          this.actionSelected = "viewBooks";
+      }
+
+      requestBooks(){
+        this.actionSelected = "requestBooks";
     }
 
 
