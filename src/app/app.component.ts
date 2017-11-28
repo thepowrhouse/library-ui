@@ -16,6 +16,16 @@ import {IHeaderItem} from "./shared-components/header/header-item";
 export class AppComponent implements OnInit {
   title = 'Library Management';
 
+  loadedFeature = 'searchbooks';
+  loadedAction = '';
+  onNavigate(feature: string) {
+    this.loadedFeature = feature;
+  }
+
+  onClickAction(action: string) {
+    this.loadedAction = action;
+  }
+
   private _tokenStream = new Subject();
   private _tokenSource$ = this._tokenStream.asObservable();
 

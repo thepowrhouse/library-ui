@@ -1,0 +1,50 @@
+<h1  style = "text-align: center;"  class="card-header">Book Addition Page</h1>
+
+    <table class="d-table">
+        <tr>
+            <td>Book ID : </td>
+            <td><input type="text" class="text" #bookIDInput></td>
+        </tr>
+        <tr>
+                <td>Book Name : </td>
+                <td><input type="text" class="text" #bookName></td>
+        </tr>
+        <tr>
+                <td>Book Description : </td>
+                <td><input type="text" class="text" #bookDescription></td>
+        </tr>   
+        <tr>
+                <td>ISBN : </td>
+                <td><input type="text" class="text" #bookISBN></td>    
+        </tr>
+        <tr>
+                <td>Author : </td>
+                <td><input type="text" class="text" #bookAuthor></td>    
+        </tr> 
+        <tr>
+                <td>Title : </td>
+                <td><input type="text" class="text" #bookTitle></td>    
+        </tr>
+        <tr>
+                <td>Publisher : </td>
+                <td><input type="text" class="text" #bookPublisher></td>    
+        </tr> 
+        <tr>
+                <td>Year of Publication : </td>
+                <td><input type="text" class="text" #bookPublication></td>    
+        </tr>
+        <tr>
+                <td>Location : </td>
+                <td><input type="text" class="text" #bookLocation></td>    
+        </tr> 
+        <tr>
+                <td>No of Copies : </td>
+                <td><input type="text" class="text" #bookCopies></td>    
+        </tr>
+        <tr>
+                <td>Current Status : </td>
+                <td><input type="text" class="text" #bookStatus></td>    
+        </tr>
+    </table>
+
+    <input type="submit" class="btn-submit" value="Add Books" (click)= "addBooks()"/>
