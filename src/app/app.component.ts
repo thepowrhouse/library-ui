@@ -14,17 +14,6 @@ import {IHeaderItem} from "./shared-components/header/header-item";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Library Management';
-
-  loadedFeature = 'searchbooks';
-  loadedAction = '';
-  onNavigate(feature: string) {
-    this.loadedFeature = feature;
-  }
-
-  onClickAction(action: string) {
-    this.loadedAction = action;
-  }
 
   private _tokenStream = new Subject();
   private _tokenSource$ = this._tokenStream.asObservable();
@@ -48,11 +37,10 @@ export class AppComponent implements OnInit {
       clientSecret: this._config.authenticationClientSecret
     });
 
-
-    if (!this._auth.currentToken || this._auth.expired) {
+   /*if (!this._auth.currentToken || this._auth.expired) {
       this.items.filter(i=>i.title == 'Logout')[0].display = false;
       this.login('');
-    }
+    }*/
 
   }
 

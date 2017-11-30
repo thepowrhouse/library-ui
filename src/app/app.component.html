@@ -1,4 +1,4 @@
-<app-header (featureSelected)="onNavigate($event)"></app-header>
-<booksearch-root *ngIf="loadedFeature === 'searchbooks'"></booksearch-root>
-<bookaddservice-root *ngIf="loadedFeature === 'addbooks'"></bookaddservice-root>
-<bookapproval-root *ngIf="loadedFeature === 'requestBooks'"></bookapproval-root>
+<app-header [items]="items" title="Library"></app-header>
+<div class='container'>
+  <router-outlet></router-outlet>
+</div>

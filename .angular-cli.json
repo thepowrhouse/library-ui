@@ -9,6 +9,7 @@
       "outDir": "dist",
       "assets": [
         "assets",
+        "api",
         "favicon.ico",
         { "glob": "**/*", "input": "./app/shared-components/assets", "output": "./assets/" }
       ],
