@@ -4,56 +4,56 @@
     "id": "1",
     "title": "JavaScript",
     "description": "The Definitive Guide",
-    "imageUri": "http://twimgs.com/ddj/galleries/24/03_full.jpg",
+    "imageUrl": "http://twimgs.com/ddj/galleries/24/03_full.jpg",
     "status": "Available"
   },
   {
     "id": "1",
     "title": "Eloquent Javascript",
     "description": "A modern introduction to programming",
-    "imageUri": "http://eloquentjavascript.net/img/cover.png",
+    "imageUrl": "http://eloquentjavascript.net/img/cover.png",
     "status": "Available"
   },
   {
     "id": "1",
     "title": "Beginning NodeJs",
     "description": "Fast-track your web development skills to build high performance SPA with angular 4 and beyond",
-    "imageUri": "https://thenewboston.com/images/forum/upload/2015-04-01/e1e0d55413d6d6a2a372de81888a683e.png",
+    "imageUrl": "https://thenewboston.com/images/forum/upload/2015-04-01/e1e0d55413d6d6a2a372de81888a683e.png",
     "status": "Available"
   },
   {
     "id": "1",
     "title": "Getting started with Angular",
     "description": "Fast-track your web development skills to build high performance SPA with angular 4 and beyond",
-    "imageUri": "https://www.packtpub.com/sites/default/files/B06166.png",
+    "imageUrl": "https://www.packtpub.com/sites/default/files/B06166.png",
     "status": "Available"
   },
   {
     "id": "1",
     "title": "Getting started with Angular",
     "description": "Fast-track your web development skills to build high performance SPA with angular 4 and beyond",
-    "imageUri": "https://www.packtpub.com/sites/default/files/B06166.png",
+    "imageUrl": "https://www.packtpub.com/sites/default/files/B06166.png",
     "status": "Available"
   },
   {
     "id": "1",
     "title": "Getting started with Angular",
     "description": "Fast-track your web development skills to build high performance SPA with angular 4 and beyond",
-    "imageUri": "https://www.packtpub.com/sites/default/files/B06166.png",
+    "imageUrl": "https://www.packtpub.com/sites/default/files/B06166.png",
     "status": "Available"
   },
   {
     "id": "1",
     "title": "Getting started with Angular",
     "description": "Fast-track your web development skills to build high performance SPA with angular 4 and beyond",
-    "imageUri": "https://www.packtpub.com/sites/default/files/B06166.png",
+    "imageUrl": "https://www.packtpub.com/sites/default/files/B06166.png",
     "status": "Available"
   },
   {
     "id": "1",
     "title": "Getting started with Angular",
     "description": "Fast-track your web development skills to build high performance SPA with angular 4 and beyond",
-    "imageUri": "https://www.packtpub.com/sites/default/files/B06166.png",
+    "imageUrl": "https://www.packtpub.com/sites/default/files/B06166.png",
     "status": "Available"
   }
 ]

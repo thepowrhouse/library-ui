@@ -17,11 +17,11 @@ export class BookService {
   }
 
   findAll():Observable<IBook[]> {
-    return this._http.get<IBook[]>('./api/books/books.json');
+    return this._http.get<IBook[]>(this._bookUrl + '.json');
   }
 
   findOne(id:number):Observable<IBook> {
-    return this._http.get<IBook>(this._bookUrl + "/" + id);
+    return this._http.get<IBook>(this._bookUrl + "/" + id + '.json');
   }
 
   save(book:IBook) {

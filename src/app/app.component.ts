@@ -7,6 +7,7 @@ import {ConfigService} from "@app/services/config.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {LoginComponent} from "./shared-components/login/login.component";
 import {IHeaderItem} from "./shared-components/header/header-item";
+import {EditComponent} from "./book/edit/edit.component";
 
 @Component({
   selector: 'app-root',
@@ -83,6 +84,13 @@ export class AppComponent implements OnInit {
       display: true
     },
     {
+      title: 'Add',
+      link: undefined,
+      type: 'Button',
+      action: this.add.bind(this),
+      display: true
+    },
+    {
       title: 'Login',
       link: undefined,
       type: 'Button',
@@ -134,5 +142,10 @@ export class AppComponent implements OnInit {
   logout() {
     this._auth.invalidateToken();
     this.login('');
+  }
+
+  add() {
+    const modalRef = this.modalService.open(EditComponent);
+    modalRef.componentInstance.title = "Add";
   }
 }
