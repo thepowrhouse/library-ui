@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import {DetailComponent} from "./detail/detail.component";
 import {BookGuardService} from "./book-guard.service";
 import {EditComponent} from "./edit/edit.component";
+import {IssueComponent} from "./issue/issue.component";
 
 @NgModule({
   imports: [
@@ -14,7 +15,10 @@ import {EditComponent} from "./edit/edit.component";
       { path: 'books', component: ListComponent },
       { path: 'books/:id',
         canActivate: [ BookGuardService ],
-        component: DetailComponent }
+        component: DetailComponent },
+      { path: 'books/issue/:id',
+        canActivate: [ BookGuardService ],
+        component: IssueComponent }
     ]),
     CommonModule,
     FormsModule
@@ -26,6 +30,6 @@ import {EditComponent} from "./edit/edit.component";
   entryComponents:[
     EditComponent
   ],
-  declarations: [ListComponent, DetailComponent, EditComponent]
+  declarations: [ListComponent, DetailComponent, EditComponent, IssueComponent]
 })
 export class BookModule { }

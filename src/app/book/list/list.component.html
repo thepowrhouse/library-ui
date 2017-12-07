@@ -7,6 +7,7 @@
         <h3 class="card-title">{{book.title}}</h3>
         <p class="card-text">{{book.description}}</p>
         <a [routerLink]="['/books', book.id]" class="btn btn-outline-success">View</a>
+        <a [routerLink]="['/books/issue', book.id]" class="btn btn-outline-success">Issue</a>
       </div>
     </div>
   </div>

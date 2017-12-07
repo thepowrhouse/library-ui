@@ -28,6 +28,14 @@ export class BookService {
     return this._http.post<IBook>(this._bookUrl, book);
   }
 
+  issueBook(book:IBook) {
+    return this._http.post<IBook>(this._bookUrl, book);
+  }
+
+  rejectBook(book:IBook) {
+    return this._http.post<IBook>(this._bookUrl, book);
+  }
+
   delete(id:number) {
     return this._http.delete<IBook>(this._bookUrl + "/" + id).subscribe(book=>console.log(book));
   }
