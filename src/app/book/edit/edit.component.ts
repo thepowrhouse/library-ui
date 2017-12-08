@@ -24,7 +24,7 @@ export class EditComponent implements OnInit {
   }
 
   constructor(private _bookService:BookService, private _http:HttpClient, public activeModal:NgbActiveModal) {
-    this.book = {id: null, title: '', description: null, imageUrl: null, status: null, _links: null};
+    this.book = {id: null, title: '', description: null, imageUrl: null, status: null};
   }
 
   save() {
