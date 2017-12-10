@@ -17,15 +17,15 @@ export class BookService {
   }
 
   findAll():Observable<IBook[]> {
-    return this._http.get<IBook[]>(this._bookUrl + '.json');
+    return this._http.get<IBook[]>(this._bookUrl);
   }
 
   findOne(id:number):Observable<IBook> {
-    return this._http.get<IBook>(this._bookUrl + "/" + id + '.json');
+    return this._http.get<IBook>(this._bookUrl + "/" + id);
   }
 
   save(book:IBook) {
-    return this._http.post<IBook>(this._bookUrl, book);
+    return this._http.put<IBook>(this._bookUrl + "/" + book.id, book);
   }
 
   delete(id:number) {

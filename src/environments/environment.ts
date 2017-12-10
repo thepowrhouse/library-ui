@@ -10,5 +10,5 @@ export const environment= {
   authenticationClientSecret: "n9zY8vL8WsxKQSfK47ALuRUzDA3Y5hfR",
   userName: "990012",
   password: "admin123",
-  book_service_url: './api/books'
+  book_service_url: 'http://localhost:8765/api/v1/library'
 };
