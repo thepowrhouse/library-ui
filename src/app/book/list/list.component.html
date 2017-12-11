@@ -1,14 +1,20 @@
-
-<div class="row" *ngIf='filteredBooks  && filteredBooks.length'>
-  <div class="col-sm-3" *ngFor='let book of filteredBooks'>
-    <div class="card">
-      <div class="card-block">
-        <img class="card-img" src={{book.imageURL}} alt={{book.title}}>
-        <h3 class="card-title">{{book.title}}</h3>
-        <p class="card-text">{{book.description}}</p>
-        <a [routerLink]="['/books', book.id]" class="btn btn-outline-success">View</a>
+<section class="flex-sect">
+  <div class="container-width">
+    <div class="flex-title">Ness Library
+    </div>
+    <div class="cards" *ngIf='filteredBooks  && filteredBooks.length'>
+      <div class="card" *ngFor='let book of filteredBooks'>
+        <div class="card-header">
+            <img class="card-img" src={{book.imageURL}} alt={{book.title}}>
+        </div>
+        <div class="card-body">
+          <div class="card-title">{{book.title}} 
+          </div>
+          <div class="card-desc">{{book.description}}
+          </div>
+          <a [routerLink]="['/books', book.id]" class="btn btn-outline-success">View</a>
+        </div>
       </div>
     </div>
   </div>
-
-</div>
+</section>

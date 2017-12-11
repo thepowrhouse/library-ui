@@ -4,3 +4,124 @@
 img{
   max-width: 100px;
 }
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+.container-width{
+  width:90%;
+  max-width:1150px;
+  margin-top:0px;
+  margin-right:auto;
+  margin-bottom:0px;
+  margin-left:auto;
+}
+.flex-sect{
+  background-color:rgb(250, 250, 250);
+  padding-top:0px;
+  padding-right:0px;
+  padding-bottom:100px;
+  padding-left:0px;
+  font-family:Helvetica, serif;
+}
+.flex-title{
+  margin-bottom:15px;
+  font-size:2em;
+  text-align:center;
+  font-weight:700;
+  color:rgb(85, 85, 85);
+  padding-top:5px;
+  padding-right:5px;
+  padding-bottom:5px;
+  padding-left:5px;
+}
+.flex-desc{
+  margin-bottom:55px;
+  font-size:1em;
+  color:rgba(0, 0, 0, 0.5);
+  text-align:center;
+  padding-top:5px;
+  padding-right:5px;
+  padding-bottom:5px;
+  padding-left:5px;
+}
+.cards{
+  padding-top:20px;
+  padding-right:0px;
+  padding-bottom:20px;
+  padding-left:0px;
+  display:flex;
+  justify-content:space-around;
+  flex-direction:initial;
+  flex-wrap:wrap;
+}
+.card{
+  background-color:white;
+  height:350px;
+  width:300px;
+  margin-bottom:30px;
+  box-shadow:rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
+  border-top-left-radius:2px;
+  border-top-right-radius:2px;
+  border-bottom-right-radius:2px;
+  border-bottom-left-radius:2px;
+  transition-duration:0.5s;
+  transition-timing-function:ease;
+  transition-delay:initial;
+  transition-property:all;
+  font-weight:100;
+  overflow-x:hidden;
+  overflow-y:hidden;
+}
+.card:hover{
+  margin-top:-5px;
+  box-shadow:rgba(0, 0, 0, 0.2) 0px 20px 30px 0px;
+}
+.card-header{
+  height:155px;
+  background-size:cover;
+  background-position-x:center;
+  background-position-y:center;
+}
+.card-header.ch2{
+  background-image:url("http://placehold.it/350x250/459ba8/fff/image2.jpg");
+}
+.card-header.ch3{
+  background-image:url("http://placehold.it/350x250/79c267/fff/image3.jpg");
+}
+.card-header.ch4{
+  background-image:url("http://placehold.it/350x250/c5d647/fff/image4.jpg");
+}
+.card-header.ch5{
+  background-image:url("http://placehold.it/350x250/f28c33/fff/image5.jpg");
+}
+.card-header.ch6{
+  background-image:url("http://placehold.it/350x250/e868a2/fff/image6.jpg");
+}
+.card-body{
+  padding-top:15px;
+  padding-right:15px;
+  padding-bottom:5px;
+  padding-left:15px;
+  color:rgb(85, 85, 85);
+}
+.card-title{
+  font-size:1.4em;
+  margin-bottom:5px;
+}
+.card-sub-title{
+  color:rgb(179, 179, 179);
+  font-size:1em;
+  margin-bottom:15px;
+}
+.card-desc{
+  font-size:0.85rem;
+  line-height:17px;
+}
+.am-sect{
+  padding-top:100px;
+  padding-bottom:100px;
+  font-family:Helvetica, serif;
+}

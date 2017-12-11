@@ -26,7 +26,7 @@ export class UserService {
   }
 
   save(user:IUser) {
-    return this._http.post<IUser>(this._userUrl + "/" + user.id, user);
+    return this._http.put<IUser>(this._userUrl + "/" + user.id, user);
   }
 
   delete(id:number) {

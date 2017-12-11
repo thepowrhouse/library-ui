@@ -1,34 +1,30 @@
 <table class="table">
-  <tr>
-    <td>
-      <h3>
-        User Name
-      </h3>
-    </td>
-    <td>
-      <h3>
-        User Email
-      </h3>
-    </td>
-
-    <td>
-      <h3>
-        User Role
-      </h3>
-    </td>
-    <td>
-        <h3>
-          View
-        </h3>
-      </td>
-  </tr>
-  <tr *ngFor='let user of filteredUsers'>
-    <td> {{ user.username }} </td>
-    <td> {{ user.useremail }} </td>
-    <td> {{ user.role }} </td>
-    <td>
-    <a [routerLink]="['/users', user.id]" class="btn btn-outline-success">View</a>
-  </td>
-  </tr>
-
+    <div class="row header green">
+        <div class="cell">
+            User Name
+        </div>
+        <div class="cell">
+            Email
+        </div>
+        <div class="cell">
+            Role
+        </div>
+        <div class="cell">
+            Details
+        </div>
+  </div>
+  <div class="row" *ngFor='let user of filteredUsers'>
+    <div class="cell">
+        {{ user.username }}
+    </div>
+    <div class="cell">
+        {{ user.useremail }}
+    </div>
+    <div class="cell">
+        {{ user.role }}
+    </div>
+    <div class="cell">
+        <a [routerLink]="['/users', user.id]" class="btn btn-outline-success">View</a>
+    </div>
+  </div>
 </table>
