@@ -1,0 +1,30 @@
+
+<div class="modal-header">
+  <h4 class="modal-title">{{title || 'Add'}} user</h4>
+</div>
+<div class="modal-body">
+
+  <div class="form-group">
+    <label >User Name</label>
+    <input type="text" class="form-control"  [(ngModel)]="user.username" placeholder="Enter user name">
+  </div>
+
+  <div class="form-group">
+    <label for="password">User Password</label>
+    <input type="password" class="form-control" id="password" [(ngModel)]="user.password" placeholder="Enter the Password">
+  </div>
+
+  <div class="form-group">
+    <label for="useremail">User Email</label>
+    <input type="text" class="form-control" id="useremail" [(ngModel)]="user.useremail" placeholder="Enter user email">
+  </div>
+
+  <div class="form-group">
+    <label for="role">User Role</label>
+    <input type="text" class="form-control" id="role" [(ngModel)]="user.role" placeholder="Enter the User Role">
+  </div>
+
+
+  <button type="button" class="btn btn-primary" (click)="save()">Submit</button>
+
+</div>
