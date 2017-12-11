@@ -10,9 +10,11 @@
         <div class="card-body">
           <div class="card-title">{{book.title}} 
           </div>
-          <div class="card-desc">{{book.description}}
+          <div class="card-sub-title">{{book.description}}
           </div>
-          <a [routerLink]="['/books', book.id]" class="btn btn-outline-success">View</a>
+          <div class="card-bottom">
+            <a [routerLink]="['/books', book.id]" class="btn btn-outline-success">View</a>
+          </div>
         </div>
       </div>
     </div>
