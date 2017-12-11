@@ -8,6 +8,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {LoginComponent} from "./shared-components/login/login.component";
 import {IHeaderItem} from "./shared-components/header/header-item";
 import {EditComponent} from "./book/edit/edit.component";
+import {UserEditComponent} from "./user/edit/useredit.component";
 
 @Component({
   selector: 'app-root',
@@ -75,6 +76,13 @@ export class AppComponent implements OnInit {
       display: true
     },
     {
+      title: 'Users',
+      link: '/users',
+      type: 'Link',
+      action: undefined,
+      display: true
+    },
+    {
       title: 'Search',
       link: undefined,
       type: 'Search',
@@ -88,6 +96,13 @@ export class AppComponent implements OnInit {
       link: undefined,
       type: 'Button',
       action: this.add.bind(this),
+      display: true
+    },
+    {
+      title: 'Add Users',
+      link: undefined,
+      type: 'Button',
+      action: this.addUsers.bind(this),
       display: true
     },
     {
@@ -147,5 +162,10 @@ export class AppComponent implements OnInit {
   add() {
     const modalRef = this.modalService.open(EditComponent);
     modalRef.componentInstance.title = "Add";
+  }
+
+  addUsers() {
+    const modalRef = this.modalService.open(UserEditComponent);
+    modalRef.componentInstance.title = "Add Users";
   }
 }
