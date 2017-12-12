@@ -16,6 +16,6 @@ RUN git init
 
 RUN git submodule update --recursive --remote
 
-EXPOSE 4200 4200
+EXPOSE 4200
 
 CMD [ "npm", "start"]
