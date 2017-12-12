@@ -6,18 +6,16 @@ WORKDIR /usr/src/app
 
 COPY package.json package-lock.json ./
 
-RUN git init
-
-RUN git submodule update --recursive --remote
-
 RUN npm install -g @angular/cli@1.5.0
 
 RUN npm install
 
-RUN npm i -g npm
+COPY . .
 
-CMD mv .angular-cli.json angular-cli.json
+RUN git init
+
+RUN git submodule update --recursive --remote
 
 EXPOSE 4200 4200
 
-ENTRYPOINT npm start
+CMD [ "npm", "start"]
