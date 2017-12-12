@@ -10,9 +10,11 @@ RUN git init
 
 RUN git submodule update --recursive --remote
 
-RUN npm install -g @angular/cli
+RUN npm install -g @angular/cli@1.5.0
 
 RUN npm install
+
+RUN npm i -g npm
 
 CMD mv .angular-cli.json angular-cli.json
 
