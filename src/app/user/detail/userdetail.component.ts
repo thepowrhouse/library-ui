@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { IUser } from '@app/user/user';
-import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '@app/user/user.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { UsereditComponent } from '@app/user/edit/useredit.component';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {IUser} from '@app/user/user';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserService} from '@app/user/user.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {UsereditComponent} from '@app/user/edit/useredit.component';
 
 @Component({
   selector: 'app-user-detail',
@@ -18,9 +18,9 @@ export class UserdetailComponent implements OnInit {
   constructor(private _route:ActivatedRoute,
               private _router:Router,
               private _userService:UserService,
-              private modalService:NgbModal) { 
-                this.user = {id: null, username: '', useremail: null, password: null, role: null};
-              }
+              private modalService:NgbModal) {
+    this.user = {id: null, username: '', useremail: null, password: null, role: null};
+  }
 
   ngOnInit() {
     const id = +this._route.snapshot.paramMap.get('id');
@@ -35,14 +35,24 @@ export class UserdetailComponent implements OnInit {
   }
 
   edit() {
+    let self = this;
     const modalRef = this.modalService.open(UsereditComponent);
     modalRef.componentInstance.title = "Edit";
     modalRef.componentInstance.id = this.user.id;
+    modalRef.result.then((result) => {
+      self.user = result;
+    }, (reason) => {
+      //error case
+    });
   }
 
 
   deleteBook() {
-    this._userService.delete(this.user.id);
+    this._userService.delete(this.user.id).subscribe(
+      user=>this._router.navigate(['/users']),
+      error=>this._router.navigate(['/users'])
+    );
+
   }
 
   onBack():void {

@@ -1,4 +1,3 @@
-
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {RequestOptions, Request, RequestMethod} from '@angular/http';
@@ -26,11 +25,16 @@ export class UserService {
   }
 
   save(user:IUser) {
-    return this._http.put<IUser>(this._userUrl + "/" + user.id, user);
+
+    if (user.id) {
+      return this._http.put<IUser>(this._userUrl + "/" + user.id, user);
+    } else {
+      return this._http.post<IUser>(this._userUrl + "/", user);
+    }
   }
 
   delete(id:number) {
-    return this._http.delete<IUser>(this._userUrl + "/" + id).subscribe(user=>console.log(user));
+    return this._http.delete<IUser>(this._userUrl + "/" + id);
   }
 
   private handleError(err:HttpErrorResponse) {

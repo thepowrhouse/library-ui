@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {IBook} from "../book";
 import {BookService} from "../book.service";
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
-import {Router, ActivatedRoute} from "@angular/router";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -23,7 +23,7 @@ export class EditComponent implements OnInit {
     }
   }
 
-  constructor(private _bookService:BookService, private _http:HttpClient, public activeModal:NgbActiveModal, private _router:Router, private route:ActivatedRoute) {
+  constructor(private _bookService:BookService, private _http:HttpClient, public activeModal:NgbActiveModal, private _router:Router) {
     this.book = {
       id: null,
       title: '',
