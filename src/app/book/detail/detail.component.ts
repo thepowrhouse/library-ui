@@ -21,7 +21,16 @@ export class DetailComponent implements OnInit {
               private _router:Router,
               private _bookService:BookService,
               private modalService:NgbModal) {
-    this.book = {id: null, title: '', description: null, imageUrl: null, status: null};
+    this.book = {
+      id: null,
+      title: '',
+      description: null,
+      imageUrl: null,
+      status: null,
+      author: null,
+      publisher: null,
+      year_of_publication: null
+    };
   }
 
   ngOnInit() {
@@ -37,14 +46,24 @@ export class DetailComponent implements OnInit {
   }
 
   edit() {
+    let self = this;
     const modalRef = this.modalService.open(EditComponent);
     modalRef.componentInstance.title = "Edit";
     modalRef.componentInstance.id = this.book.id;
+    modalRef.result.then((result) => {
+      self.book = result;
+    }, (reason) => {
+      //error case
+    });
   }
 
 
   deleteBook() {
-    this._bookService.delete(this.book.id);
+    this._bookService.delete(this.book.id).subscribe(a=>this._router.navigate(['/books']), error=> {
+      console.log(error);
+      this._router.navigate(['/books'])
+    });
+
   }
 
   onBack():void {

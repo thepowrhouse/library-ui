@@ -1,9 +1,10 @@
-import {Component, OnInit, Input, ElementRef, ViewChild} from "@angular/core";
+import {Component, OnInit, Input} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {IBook} from "../book";
-import {environment} from "../../../environments/environment";
 import {BookService} from "../book.service";
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {Router, ActivatedRoute} from "@angular/router";
+
 
 @Component({
   selector: 'app-edit',
@@ -15,35 +16,38 @@ export class EditComponent implements OnInit {
   @Input()
   id:number;
   book:IBook;
-  avatar:any;
-  
+
   ngOnInit() {
     if (this.id) {
       this._bookService.findOne(this.id).subscribe(book => this.book = book);
     }
   }
 
-  constructor(private _bookService:BookService, private _http:HttpClient, public activeModal:NgbActiveModal) {
-    this.book = {id: null, title: '', description: null, imageUrl: null, status: null};
+  constructor(private _bookService:BookService, private _http:HttpClient, public activeModal:NgbActiveModal, private _router:Router, private route:ActivatedRoute) {
+    this.book = {
+      id: null,
+      title: '',
+      description: null,
+      imageUrl: null,
+      status: null,
+      author: null,
+      publisher: null,
+      year_of_publication: null
+    };
   }
 
   save() {
-    this._bookService.save(this.book).subscribe(
+    this._bookService.saveOrUpdate(this.book).subscribe(
       (book:IBook)=> {
         console.log(book);
-        this.activeModal.dismiss();
+        this.activeModal.close(book);
+        this._router.navigate(["/books/" + book.id]);
       },
       error=> {
+        this.activeModal.dismiss(error);
         console.error(error);
       }
     );
   }
 
-  onFileChange(event) {
-    if (event.target.files.length > 0) {
-      this.avatar = event.target.files[0];
-    }
-  }
-
-  
 }

@@ -1,6 +1,5 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {RequestOptions, Request, RequestMethod} from '@angular/http';
 import {Observable} from "rxjs/Observable";
 import {IBook} from "./book";
 import {environment} from "../../environments/environment";
@@ -24,12 +23,22 @@ export class BookService {
     return this._http.get<IBook>(this._bookUrl + "/" + id);
   }
 
-  save(book:IBook) {
-    return this._http.put<IBook>(this._bookUrl + "/" + book.id, book);
+  saveOrUpdate(book:IBook) {
+    if (book.id) {
+      return this._http.put<IBook>(this._bookUrl + "/" + book.id, book);
+    } else {
+      book.isbn = "";
+      book.year_of_publication = "2007";
+      book.publisher = "";
+      book.status = "";
+      book.author="";
+      return this._http.post<IBook>(this._bookUrl + "/", book);
+    }
+
   }
 
   delete(id:number) {
-    return this._http.delete<IBook>(this._bookUrl + "/" + id).subscribe(book=>console.log(book));
+    return this._http.delete<IBook>(this._bookUrl + "/" + id);
   }
 
   private handleError(err:HttpErrorResponse) {
