@@ -39,10 +39,10 @@ export class AppComponent implements OnInit {
       clientSecret: this._config.authenticationClientSecret
     });
 
-   /*if (!this._auth.currentToken || this._auth.expired) {
+   if (!this._auth.currentToken || this._auth.expired) {
       this.items.filter(i=>i.title == 'Logout')[0].display = false;
       this.login('');
-    }*/
+    }
 
   }
 
@@ -61,13 +61,6 @@ export class AppComponent implements OnInit {
   }
 
   items:Array<IHeaderItem> = [
-    {
-      title: 'Home',
-      link: '/',
-      type: 'Link',
-      action: undefined,
-      display: true
-    },
     {
       title: 'Books',
       link: '/books',

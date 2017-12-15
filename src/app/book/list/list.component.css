@@ -7,9 +7,6 @@ img{
 * {
   box-sizing: border-box;
 }
-body {
-  margin: 0;
-}
 .container-width{
   width:90%;
   max-width:1150px;
