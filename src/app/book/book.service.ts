@@ -60,7 +60,8 @@ export class BookService {
   }
 
   private getAuthHeaders() {
+    let token = this._auth && this._auth.currentToken && this._auth.currentToken.access_token;
     let headers = new HttpHeaders();
-    return headers.set('Authorization', `Bearer ${this._auth.currentToken.access_token}`);
+    return headers.set('Authorization', `Bearer ${token}`);
   }
 }

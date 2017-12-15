@@ -8,7 +8,8 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {LoginComponent} from "./shared-components/login/login.component";
 import {IHeaderItem} from "./shared-components/header/header-item";
 import {EditComponent} from "./book/edit/edit.component";
-import { UsereditComponent } from "@app/user/edit/useredit.component";
+import {UsereditComponent} from "@app/user/edit/useredit.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,8 @@ export class AppComponent implements OnInit {
               private _config:ConfigService,
               private _network:NetworkService,
               private _zone:NgZone,
-              private modalService:NgbModal) {
+              private modalService:NgbModal,
+              private _router:Router) {
   }
 
   ngOnInit() {
@@ -39,9 +41,11 @@ export class AppComponent implements OnInit {
       clientSecret: this._config.authenticationClientSecret
     });
 
-   if (!this._auth.currentToken || this._auth.expired) {
+    if (!this._auth.currentToken || this._auth.expired) {
       this.items.filter(i=>i.title == 'Logout')[0].display = false;
       this.login('');
+    }else{
+      this.updateHeader();
     }
 
   }
@@ -110,7 +114,7 @@ export class AppComponent implements OnInit {
       title: 'Logout',
       link: undefined,
       type: 'Button',
-      action: this.login.bind(this),
+      action: this.logout.bind(this),
       display: true
     },
 
@@ -127,7 +131,7 @@ export class AppComponent implements OnInit {
   login(err:string) {
     let self = this;
     const modalRef = this.modalService.open(LoginComponent);
-    modalRef.componentInstance.errorMessage=err;
+    modalRef.componentInstance.errorMessage = err;
     modalRef.result
       .then((result) => {
           if (result && result.action == 'Login') {
@@ -136,9 +140,8 @@ export class AppComponent implements OnInit {
                 console.log(err);
                 self.login("Login failed");
               }
-              self.items.filter(i=>i.title == 'Logout')[0].display = true;
-              self.items.filter(i=>i.title == 'Login')[0].display = false;
-              self.items.filter(i=>i.type == 'UserName')[0].title = self._auth.userName;
+              self.updateHeader();
+              self._router.navigate(['/']);
             });
           }
         },
@@ -148,7 +151,7 @@ export class AppComponent implements OnInit {
   }
 
   logout() {
-    this._auth.invalidateToken();
+    this._auth.logout();
     this.login('');
   }
 
@@ -161,4 +164,17 @@ export class AppComponent implements OnInit {
     const modalRef = this.modalService.open(UsereditComponent);
     modalRef.componentInstance.title = "Add Users";
   }
+
+  private updateHeader(){
+    this.items.forEach(i=> {
+      if (i.title == 'Logout') {
+        i.display = true;
+      } else if (i.title == 'Login') {
+        i.display = false;
+      } else if (i.type == 'UserName') {
+        i.title = this._auth.userName;
+      }
+    });
+  }
+
 }

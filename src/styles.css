@@ -8,3 +8,7 @@ body {
   background: #cac9c9;
   margin: 0;
 }
+
+a, button {
+  cursor: pointer;
+}
