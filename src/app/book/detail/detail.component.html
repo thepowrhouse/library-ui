@@ -3,9 +3,14 @@
     <div class="card-block">
       <img class="card-img" src={{book.imageURL}} alt={{book.title}}>
       <h3 class="card-title">{{book.title}}</h3>
+      <p class="card-text">By {{book.author}}</p>
       <p class="card-text">{{book.description}}</p>
+      <p class="card-text">Published by {{book.publisher}} on {{book.year_of_publication}}</p>
+      <p class="card-text">{{book.isbn}}</p>
       <button class="btn btn-outline-success" (click)="edit()">edit</button>
       <button class="btn btn-outline-success" (click)="deleteBook()">delete</button>
+      <button *ngIf='book.status !== "Available"' class="btn btn-outline-success" (click)="issue()">release</button>
+      <button *ngIf='book.status === "Available"' class="btn btn-outline-success" (click)="issue()">issue</button>
     </div>
   </div>
 </div>

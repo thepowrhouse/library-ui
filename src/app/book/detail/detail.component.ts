@@ -4,6 +4,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {IBook} from "../book";
 import {BookService} from "../book.service";
 import {EditComponent} from "../edit/edit.component";
+import {IssueComponent} from "../issue/issue.component";
 //import {EditComponent} from "../edit/edit.component";
 
 
@@ -69,5 +70,16 @@ export class DetailComponent implements OnInit {
   onBack():void {
     this._router.navigate(['/books']);
   }
+  issue(){
+    let self = this;
+    const modalRef = this.modalService.open(IssueComponent);
+    modalRef.componentInstance.id = this.book.id;
+    modalRef.result.then((result) => {
+      self.book = result;
+    }, (reason) => {
+      //error case
+    });
+  }
+
 
 }

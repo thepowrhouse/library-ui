@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 import {DetailComponent} from './detail/detail.component';
 import {BookGuardService} from './book-guard.service';
 import {EditComponent} from './edit/edit.component';
+import {LibraryService} from "./library.service";
+import {IssueComponent} from "./issue/issue.component";
 
 @NgModule({
   imports: [
@@ -21,11 +23,13 @@ import {EditComponent} from './edit/edit.component';
   ],
   providers: [
     BookService,
-    BookGuardService
+    BookGuardService,
+    LibraryService
   ],
   entryComponents: [
-    EditComponent
+    EditComponent,
+    IssueComponent
   ],
-  declarations: [ListComponent, DetailComponent, EditComponent]
+  declarations: [ListComponent, DetailComponent, EditComponent, IssueComponent]
 })
 export class BookModule { }
