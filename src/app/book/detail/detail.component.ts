@@ -75,7 +75,11 @@ export class DetailComponent implements OnInit {
     const modalRef = this.modalService.open(IssueComponent);
     modalRef.componentInstance.id = this.book.id;
     modalRef.result.then((result) => {
-      self.book = result;
+      console.log("Issue respone:..", result);
+      self._bookService.findOne(result.bookId).subscribe(
+        book => self.book = book,
+        error => self.errorMessage = <any>error
+      );
     }, (reason) => {
       //error case
     });

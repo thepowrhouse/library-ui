@@ -49,9 +49,27 @@ export class IssueComponent implements OnInit {
 
   submit() {
     if (this.book.status === 'Available') {
-      this._libraryService.issueBook(this.book.id, this.user);
+      this._libraryService.issueBook(this.book.id, this.user).subscribe(
+        (result)=> {
+          console.log(result);
+          this.activeModal.close(result);
+        },
+        error=> {
+          this.activeModal.dismiss(error);
+          console.error(error);
+        }
+      );
     } else {
-      this._libraryService.releaseBook(this.book.id, this.user);
+      this._libraryService.releaseBook(this.book.id, this.user).subscribe(
+        (result)=> {
+          console.log(result);
+          this.activeModal.close(result);
+        },
+        error=> {
+          this.activeModal.dismiss(error);
+          console.error(error);
+        }
+      );
     }
   }
 
